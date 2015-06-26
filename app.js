@@ -3,6 +3,7 @@ var express  = require('express');
 var app      = express();
 var aws      = require('aws-sdk');
 var queueUrl = "";
+var receipt  = "";
     
 // Load your AWS credentials and try to instantiate the object.
 aws.config.loadFromPath(__dirname + '/config.json');
@@ -84,7 +85,7 @@ app.get('/receive', function (req, res) {
 app.get('/delete', function (req, res) {
     var params = {
         QueueUrl: queueUrl,
-        ReceiptHandle: ''
+        ReceiptHandle: receipt
     };
     
     sqs.deleteMessage(params, function(err, data) {
