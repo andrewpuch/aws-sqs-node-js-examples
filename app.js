@@ -18,7 +18,7 @@ app.get('/create', function (req, res) {
     };
     
     sqs.createQueue(params, function(err, data) {
-        if (err) {
+        if(err) {
             res.send(err);
         } 
         else {
@@ -30,7 +30,7 @@ app.get('/create', function (req, res) {
 // Listing our queues.
 app.get('/list', function (req, res) {
     sqs.listQueues(function(err, data) {
-        if (err) {
+        if(err) {
             res.send(err);
         } 
         else {
@@ -50,7 +50,7 @@ app.get('/send', function (req, res) {
     };
 
     sqs.sendMessage(params, function(err, data) {
-        if (err) {
+        if(err) {
             res.send(err);
         } 
         else {
@@ -116,8 +116,8 @@ app.get('/purge', function (req, res) {
 
 // Start server.
 var server = app.listen(80, function () {
-  var host = server.address().address;
-  var port = server.address().port;
+    var host = server.address().address;
+    var port = server.address().port;
 
-  console.log('AWS SQS example app listening at http://%s:%s', host, port);
+    console.log('AWS SQS example app listening at http://%s:%s', host, port);
 });
