@@ -2,7 +2,7 @@
 var express  = require('express');
 var app      = express();
 var aws      = require('aws-sdk');
-var queueUrl = "https://sqs.us-east-1.amazonaws.com/523469370318/MyFirstQueue";
+var queueUrl = "";
     
 // Load your AWS credentials and try to instantiate the object.
 aws.config.loadFromPath(__dirname + '/config.json');
@@ -84,7 +84,7 @@ app.get('/receive', function (req, res) {
 app.get('/delete', function (req, res) {
     var params = {
         QueueUrl: queueUrl,
-        ReceiptHandle: 'AQEBGIsBV1hnrMVpicyCZrP2i+JCnUCSW/PKAzj9QQDmWo4UVj+wqmE1bRIFuYRfsXIyiuo1q6nh6EbCpqeD5y5rKD9Sqdm6v4SKEuyBP/sRhzodV2lTLmtbTArClaSPn+lN4ra8dNerOJO+jnHbuyiKAFqp5lK2Iqbb8kcW0N2TA8ggZmSr7t/LMdEoKbLNmKJbVvZDAuQwqDTvZBxBb4E2PdtQL9G5IHEzthxKWm2q0Ywe8zrUsIG9H5aDfFLSq68QZEMQvbS4i072IlX/bOuKUIIFLQuM5osRZaWTU/9jaaw+zuBl6lOzEX0kGhVE8uoVkeNVGdFecBkx5kDGn3SQHw=='
+        ReceiptHandle: ''
     };
     
     sqs.deleteMessage(params, function(err, data) {
